@@ -1,7 +1,15 @@
-import React from 'react';
+import { configureStore } from '@reduxjs/toolkit';
+import todoListSlice from '../modules/todos';
 
-const configStore = () => {
-    return <div></div>;
-};
+const store = configureStore({
+    reducer: {
+        todoList: todoListSlice
+    }
+});
 
-export default configStore;
+// Infer the `RootState` and `AppDispatch` types from the store itself
+export type RootState = ReturnType<typeof store.getState>;
+// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
+export type AppDispatch = typeof store.dispatch;
+
+export default store;
