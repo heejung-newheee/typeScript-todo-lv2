@@ -3,6 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 const GlobalStyle = createGlobalStyle`
     * {
         box-sizing: border-box;
+        padding:0; margin: 0;
     }
     button {
         border: 0;
@@ -12,8 +13,15 @@ const GlobalStyle = createGlobalStyle`
     input:active, input:focus {
         outline: none;
     }
-    a:focus {
+    a {
+        text-decoration: none;
+    }
+    a:focus, a:active, a:visited, a:hover  {
         color: inherit
+    }
+    ul {
+        list-style: none;
+        text-decoration: none;
     }
 `;
 
