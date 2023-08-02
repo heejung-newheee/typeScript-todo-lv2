@@ -1,20 +1,13 @@
 import React, { useState } from 'react';
 import { Todo } from '../../model/todo';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../redux/config/configStore';
+import { useDispatch } from 'react-redux';
 import { addTodo } from '../../redux/modules/todos';
 import shortid from 'shortid';
+import { styled } from 'styled-components';
+import Button, { BtnStyle, BtnType } from './Button';
 
-interface FormProps {
-    todoList: Todo[];
-    setTodoList: React.Dispatch<React.SetStateAction<Todo[]>>;
-}
 const Input = () => {
-    // const todos = useSelector((state: RootState) => {
-    //     return state.todoList;
-    // });
     const dispatch = useDispatch();
-
     const [title, setTitle] = useState<string>('');
     const [contents, setContents] = useState<string>('');
 
@@ -41,28 +34,56 @@ const Input = () => {
         setContents('');
     };
     return (
-        <form onSubmit={submitHandler}>
-            <label>제목</label>
-            <input
-                type="text"
-                name="title"
-                value={title}
-                onChange={(e) => {
-                    setTitle(e.target.value);
-                }}
-            />
-            <label>내용</label>
-            <input
-                type="text"
-                name="contents"
-                value={contents}
-                onChange={(e) => {
-                    setContents(e.target.value);
-                }}
-            />
-            <button>등록</button>
-        </form>
+        <StInputForm onSubmit={submitHandler}>
+            <StInputWrap>
+                <StLabel>제목</StLabel>
+                <StInput
+                    type="text"
+                    name="title"
+                    value={title}
+                    onChange={(e) => {
+                        setTitle(e.target.value);
+                    }}
+                />
+                <StLabel>내용</StLabel>
+                <StInput
+                    type="text"
+                    name="contents"
+                    value={contents}
+                    onChange={(e) => {
+                        setContents(e.target.value);
+                    }}
+                />
+                <Button type="submit" btnType={BtnType.BTN_SUBMIT} btnStyle={BtnStyle.BTN_BASIC}>
+                    등록하기
+                </Button>
+            </StInputWrap>
+        </StInputForm>
     );
 };
 
 export default Input;
+
+const StInputForm = styled.form`
+    background: #efefef;
+    padding: 20px;
+    border-radius: 5px;
+`;
+const StInputWrap = styled.div`
+    margin: 10px 0;
+`;
+const StLabel = styled.label`
+    /* display: none; */
+    margin-right: 5px;
+`;
+const StInput = styled.input`
+    padding: 15px 10px;
+    margin-right: 15px;
+    border: none;
+    border: solid 1px #ddd;
+    border-radius: 5px;
+    &:active,
+    &:focus {
+        border: solid 1px #badf76;
+    }
+`;

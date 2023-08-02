@@ -1,16 +1,20 @@
 import TodoList from '../todoList/TodoList';
 import Input from '../common/Input';
+import Layout from '../common/Layout';
+import { styled } from 'styled-components';
 
 const Main = () => {
     return (
-        <main>
-            <Input />
-            <div>
+        <StMain>
+            <Layout>
+                <Input />
                 <TodoList isDone={false} />
                 <TodoList isDone={true} />
-            </div>
-        </main>
+            </Layout>
+        </StMain>
     );
 };
 
 export default Main;
+
+const StMain = styled.main``;
