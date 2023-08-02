@@ -1,4 +1,3 @@
-import React from 'react';
 import { Todo } from '../../model/todo';
 import { useDispatch } from 'react-redux';
 import { delTodo, switchTodo } from '../../redux/modules/todos';

@@ -1,4 +1,3 @@
-import React from 'react';
 import TodoItem from '../todoItem/TodoItem';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/config/configStore';
