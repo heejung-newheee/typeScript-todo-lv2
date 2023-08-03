@@ -18,7 +18,6 @@ const Detail = () => {
         dispatch(delTodo(id));
     };
     const params = useParams();
-    console.log(params);
 
     const todo = useSelector((state: RootState) => state.todoList.find((item: Todo) => item.id === params.id));
     if (!todo) {
@@ -36,7 +35,7 @@ const Detail = () => {
                         <StContent>{todo.title}</StContent>
                         <p>내용</p>
                         <StContent>{todo.contents}</StContent>
-                        <StState>완료 여부 : {todo?.isDone ? '완료' : '미완료'}</StState>
+                        <StState>완료 여부 : {todo.isDone ? '완료' : '미완료'}</StState>
                         <StBtnWrap>
                             <Button
                                 type="button"
@@ -73,9 +72,9 @@ const Detail = () => {
                     </StTodoSection>
                     <StOtherTodo>
                         <ul>
-                            <li>목록 다른 투두 리스트</li>
-                            <li>목록 다른 투두 리스트</li>
-                            <li>목록 다른 투두 리스트</li>
+                            <li>다른 투두 리스트 목록</li>
+                            <li>다른 투두 리스트 목록</li>
+                            <li>다른 투두 리스트 목록</li>
                         </ul>
                     </StOtherTodo>
                 </StWrap>

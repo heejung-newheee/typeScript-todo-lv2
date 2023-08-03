@@ -22,7 +22,8 @@ const todoListSlice = createSlice({
     initialState: initialState,
     reducers: {
         addTodo: (state, action: PayloadAction<Todo>) => {
-            return [...state, action.payload];
+            // return [...state, action.payload];
+            state.push(action.payload); // immer 기능
         },
         delTodo: (state, action: PayloadAction<string>) => {
             return state.filter((todo) => todo.id !== action.payload);
