@@ -10,19 +10,23 @@ import { delTodo, switchTodo } from '../redux/modules/todos';
 
 const Detail = () => {
     const dispatch = useDispatch();
-    const switchTodoHandler = (id: string): void => {
-        dispatch(switchTodo(id));
-    };
+
+    const params = useParams();
+    // 전체 Todo
+    const todos = useSelector((state: RootState) => state.todoList);
+    // 해당 Todo
+    const todo = useSelector((state: RootState) => state.todoList.find((item: Todo) => item.id === params.id));
 
     const delTodoHandler = (id: string): void => {
         dispatch(delTodo(id));
     };
-    const params = useParams();
-
-    const todo = useSelector((state: RootState) => state.todoList.find((item: Todo) => item.id === params.id));
+    const switchTodoHandler = (id: string): void => {
+        dispatch(switchTodo(id));
+    };
     if (!todo) {
         return <div>요청하신 todo는 없습니다</div>;
     }
+
     return (
         <>
             <Layout>
@@ -71,10 +75,15 @@ const Detail = () => {
                         </StBtnWrap>
                     </StTodoSection>
                     <StOtherTodo>
+                        <h4>해야 할 목록</h4>
                         <ul>
-                            <li>다른 투두 리스트 목록</li>
-                            <li>다른 투두 리스트 목록</li>
-                            <li>다른 투두 리스트 목록</li>
+                            {todos
+                                .filter((todo) => {
+                                    return todo.id !== params.id;
+                                })
+                                .map((todo) => {
+                                    return <li>{todo.title}</li>;
+                                })}
                         </ul>
                     </StOtherTodo>
                 </StWrap>
