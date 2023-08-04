@@ -4,13 +4,13 @@ import shortid from 'shortid';
 
 const initialState: Todo[] = [
     {
-        id: shortid.generate(),
+        id: '1',
         title: '타입스크립트 lv2과제',
         contents: '리덕스 툴킷 사용 Todo 리스트 typescript로 만들기 - 머리속이 뒤죽박죽 너무 어렵따~~ 차근차근 정리를 해보자',
         isDone: false
     },
     {
-        id: shortid.generate(),
+        id: '2',
         title: '타입스크립트 lv1과제',
         contents: 'react lv1 과제 typescript로 만들기',
         isDone: true
