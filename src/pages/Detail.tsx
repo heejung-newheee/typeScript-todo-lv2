@@ -14,9 +14,10 @@ const Detail = () => {
     const params = useParams();
     // 전체 Todo
     const todos = useSelector((state: RootState) => state.todoList);
+
     // 해당 Todo
     const todo = useSelector((state: RootState) => state.todoList.find((item: Todo) => item.id === params.id));
-
+    console.log(todo);
     const delTodoHandler = (id: string): void => {
         dispatch(delTodo(id));
     };
@@ -82,7 +83,11 @@ const Detail = () => {
                                     return todo.id !== params.id;
                                 })
                                 .map((todo) => {
-                                    return <li>{todo.title}</li>;
+                                    return (
+                                        <Link to={`/detail/${todo.id}`} key={todo.id}>
+                                            {todo.title}
+                                        </Link>
+                                    );
                                 })}
                         </ul>
                     </StOtherTodo>
