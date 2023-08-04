@@ -17,7 +17,7 @@ const Detail = () => {
 
     // 해당 Todo
     const todo = useSelector((state: RootState) => state.todoList.find((item: Todo) => item.id === params.id));
-    console.log(todo);
+
     const delTodoHandler = (id: string): void => {
         dispatch(delTodo(id));
     };
@@ -36,9 +36,9 @@ const Detail = () => {
                 </StBackBtn>
                 <StWrap>
                     <StTodoSection>
-                        <p>제목</p>
+                        <h4>제목</h4>
                         <StContent>{todo.title}</StContent>
-                        <p>내용</p>
+                        <h4>내용</h4>
                         <StContent>{todo.contents}</StContent>
                         <StState>완료 여부 : {todo.isDone ? '완료' : '미완료'}</StState>
                         <StBtnWrap>
@@ -75,22 +75,24 @@ const Detail = () => {
                             )}
                         </StBtnWrap>
                     </StTodoSection>
-                    <StOtherTodo>
-                        <h4>해야 할 목록</h4>
-                        <ul>
+                    <StSideTodo>
+                        <h4>Todo List</h4>
+                        <StSideUl>
                             {todos
                                 .filter((todo) => {
                                     return todo.id !== params.id;
                                 })
                                 .map((todo) => {
                                     return (
-                                        <Link to={`/detail/${todo.id}`} key={todo.id}>
-                                            {todo.title}
-                                        </Link>
+                                        <StSideLi>
+                                            <Link to={`/detail/${todo.id}`} key={todo.id}>
+                                                {todo.title}
+                                            </Link>
+                                        </StSideLi>
                                     );
                                 })}
-                        </ul>
-                    </StOtherTodo>
+                        </StSideUl>
+                    </StSideTodo>
                 </StWrap>
             </Layout>
         </>
@@ -116,7 +118,7 @@ const StTodoSection = styled.div`
 `;
 
 const StContent = styled.div`
-    padding: 15px 0;
+    padding: 15px 0 25px;
 `;
 const StState = styled.div`
     position: absolute;
@@ -131,9 +133,17 @@ const StBtnWrap = styled.div`
     gap: 10px;
     margin: 10px 0 0;
 `;
-const StOtherTodo = styled.div`
+const StSideTodo = styled.div`
     width: 25%;
     padding: 30px;
     border-radius: 20px;
     border: solid 3px #ddd;
+`;
+
+const StSideUl = styled.ul`
+    padding: 20px 0 0 20px;
+`;
+
+const StSideLi = styled.li`
+    padding: 10px 0;
 `;

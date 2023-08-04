@@ -9,7 +9,6 @@ const TodoList = ({ isDone }: TodoProps) => {
     const todoList = useSelector((state: RootState) => {
         return state.todoList;
     });
-    console.log(todoList);
     return (
         <StListWrap>
             <StTitle>{isDone ? '✅ Done ' : '🟩 To Do '}</StTitle>
