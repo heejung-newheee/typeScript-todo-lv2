@@ -25,7 +25,7 @@ const GlobalStyle = createGlobalStyle`
     a {
         text-decoration: none;
     }
-    a:focus, a:active, a:visited, a:hover  {
+    a:link, a:focus, a:active, a:visited, a:hover  {
         color: inherit
     }
     ul {
