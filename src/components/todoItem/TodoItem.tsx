@@ -63,7 +63,7 @@ export default TodoItem;
 const StTodoItem = styled.div`
     width: calc((100% - 30px) / 4);
     border: solid 1px #ddd;
-    padding: 10px;
+    padding: 20px;
     border-radius: 10px;
 `;
 const StTitle = styled.h3`
@@ -82,12 +82,13 @@ const StConArea = styled.p`
     margin: 10px 0;
 `;
 const StDetailBtn = styled(Link)`
+    display: block;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin: 10px 0;
     width: 100px;
 `;
 const StBtnWrap = styled.div`
     display: flex;
     gap: 10px;
-    margin: 10px 0 0;
+    margin: 15px 0 0;
 `;
